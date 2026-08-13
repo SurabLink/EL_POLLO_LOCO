@@ -8,6 +8,9 @@ class World {
 
     ctx;
     canvas;
+    clouds = [
+        new Cloud()
+    ];
 
     constructor(canvas) {
         this.ctx = canvas.getContext('2d');
@@ -34,9 +37,19 @@ class World {
                 enemy.height
             );
         });
-        
+
+        this.clouds.forEach(cloud => {
+            this.ctx.drawImage(
+                cloud.img,
+                cloud.x,
+                cloud.y,
+                cloud.width,
+                cloud.height
+            );
+        });
+
         let self = this;
-        requestAnimationFrame(function() {
+        requestAnimationFrame(function () {
             self.draw();
         });
     }
