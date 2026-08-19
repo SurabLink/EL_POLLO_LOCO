@@ -12,7 +12,7 @@ class World {
         new Cloud()
     ];
     backgroundObjects = [
-        new BackgroundObject("img/5_background/layers/3_third_layer/1.png", 0, 100),
+        new BackgroundObject("img/5_background/layers/3_third_layer/1.png", 0),
     ];
 
     constructor(canvas) {
@@ -23,15 +23,15 @@ class World {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.addToMap(this.character);
         this.addObjectsToMap(this.backgroundObjects);
-        this.addObjectsToMap(this.enemies);
         this.addObjectsToMap(this.clouds);
+        this.addToMap(this.character);
+        this.addObjectsToMap(this.enemies);
 
 
         let self = this;
         requestAnimationFrame(function () {
-            self.draw(objects);
+            self.draw();
         });
     }
 
